@@ -22,3 +22,11 @@ def viewbook(request, bookId):
 def links(request):
     return render(request, 'bookmodule/books/links.html')
 
+def formatting(request):
+    return render(request, 'bookmodule/books/formatting.html') 
+
+def listing(request):
+    return render(request, 'bookmodule/books/listing.html')
+
+def tables(request):
+    return render(request, 'bookmodule/books/tables.html')

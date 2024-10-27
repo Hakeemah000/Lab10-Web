@@ -80,3 +80,78 @@
 .link3:active {
     background-color: darkblue;
 }
+
+h1 {
+    display: block;
+    padding: 10px;
+    margin: 0;
+    color: rgb(5, 253, 5);
+    background-color: rgb(211, 248, 219);
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+h2 {
+    display: block;
+    padding: 10px;
+    margin: 0;
+    color: rgb(5, 202, 192);
+    background-color: rgb(211, 248, 219);
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* تنسيق الجدول */
+.table1 {
+    border-collapse: separate; /* فصل الخلايا لجعل الإطارات تظهر بشكل مستقل */
+    border-spacing: 4px; /* إضافة مسافة بين الخلايا لإظهار الخطين */
+    margin: 20px auto; /* توسيط الجدول */
+    border: 2px double black; /* إطار مزدوج للجدول بالكامل */
+}
+
+/* تنسيق الخلايا */
+.table1 th, .table1 td {
+    border: 2px double black; /* إطار مزدوج حول كل خلية */
+    padding: 10px; /* مساحة داخلية في الخلية */
+    text-align: center; /* توسيط النص داخل الخلية */
+    background-color: #fff; /* لون خلفية لكل خلية */
+}
+
+/* تنسيق رؤوس الأعمدة */
+.table1 th {
+    background-color: #ffffff; /* لون خلفية لرؤوس الأعمدة */
+    font-weight: bold;
+}
+
+/* تنسيق الجدول */
+.table2 {
+    border-collapse: collapse; /* دمج الحدود */
+    width: 50%; /* عرض الجدول */
+    margin: 20px auto; /* توسيط الجدول */
+    border: 2px solid black; /* إطار للجدول بالكامل */
+}
+
+/* تنسيق الخلايا العامة */
+.table2 th, .table2 td {
+    border: 1px solid black; /* إطار لكل خلية */
+    padding: 8px; /* مسافة داخل الخلية */
+    text-align: center; /* توسيط النص */
+}
+
+/* تنسيق رأس الأعمدة "Fruit" و "Price" */
+.table2 .column-header {
+    background-color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    border: 2px solid black; /* إطار بارز أكبر */
+    width: 200px;
+    height: 100px;
+}
+.table2 .column-header1 {
+    background-color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    border: 2px solid black; /* إطار بارز أكبر */
+    height: 50px;
+    width: 100px;
+}
