@@ -30,3 +30,17 @@ def listing(request):
 
 def tables(request):
     return render(request, 'bookmodule/books/tables.html')
+
+def index(request):
+ return render(request, "bookmodule/books/index.html")
+def list_books(request):
+ return render(request, 'bookmodule/books/list_books.html')
+def one_book(request, bookId):
+    return render(request, 'bookmodule/books/one_book.html', {'bookId': bookId})
+def aboutus(request):
+ return render(request, 'bookmodule/books/aboutus.html')
+
+def index(request):
+    return render(request, 'bookmodule/index.html')
+
+
