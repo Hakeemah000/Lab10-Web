@@ -43,4 +43,42 @@ def aboutus(request):
 def index(request):
     return render(request, 'bookmodule/index.html')
 
+def search(request):
+    return render(request, 'bookmodule/books/search.html')
 
+def __getBooksList():
+ book1 = {'id':12344321, 'title':'Continuous Delivery', 'author':'J.Humble and D. Farley'}
+ book2 = {'id':56788765,'title':'Reversing: Secrets of Reverse Engineering', 'author':'E. Eilam'}
+ book3 = {'id':43211234, 'title':'The Hundred-Page Machine Learning Book', 'author':'Andriy Burkov'}
+ return [book1, book2, book3]
+
+def search(request):
+    if request.method == "POST":
+        # استرجاع البيانات من النموذج
+        string = request.POST.get('keyword', '').lower()
+        isTitle = request.POST.get('option1')
+        isAuthor = request.POST.get('option2')
+
+        # استرجاع قائمة الكتب
+        books = __getBooksList()
+        newBooks = []
+
+        # تصفية الكتب بناءً على الكلمة المفتاحية
+        for item in books:
+            contained = False
+            # تحقق من وجود الكلمة المفتاحية في العنوان إذا كان الخيار محددًا
+            if isTitle and string in item['title'].lower():
+                contained = True
+            # تحقق من وجود الكلمة المفتاحية في المؤلف إذا كان الخيار محددًا
+            if not contained and isAuthor and string in item['author'].lower():
+                contained = True
+
+            # أضف الكتاب إلى النتائج إذا كان يحتوي على الكلمة المفتاحية
+            if contained:
+                newBooks.append(item)
+
+        # عرض النتائج في القالب `bookList.html`
+        return render(request, 'bookmodule/bookList.html', {'books': newBooks})
+
+    # عرض النموذج إذا لم يكن الطلب `POST`
+    return render(request, 'bookmodule/search.html')
