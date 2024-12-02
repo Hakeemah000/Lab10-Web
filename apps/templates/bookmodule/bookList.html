@@ -15,3 +15,11 @@
     <p>No books found matching your search criteria.</p>
 {% endif %}
 {% endblock content %}
+
+
+<h1>Books List</h1>
+
+{% for obj in books %}
+    <p>ID: {{ obj.id }}, Title: {{ obj.title }}</p>
+    <hr>
+{% endfor %}

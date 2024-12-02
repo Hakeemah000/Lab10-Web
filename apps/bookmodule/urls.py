@@ -16,5 +16,10 @@ urlpatterns = [
     path('list_books.html', views.list_books, name= "list_books"),
     path('one_book.html', views.one_book, name="view_one_book"),
     path('aboutus.html', views.aboutus, name="aboutus"),
-    path('search/', views.search, name='search')
+    path('search/', views.search, name='search'),
+    path('add_books/', views.add_books, name='add_books'),
+    path('simple_query/', views.simple_query, name='simple_query'),
+    path('lookup_query/', views.lookup_query, name='lookup_query')
+
+
 ]

@@ -1,6 +1,9 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
+
+from .models import Book
+
 def index(request):
  name = request.GET.get("name") or "world!" #add this line
  return HttpResponse("Hello, "+name) #replace the word “world!” with the variable name
@@ -82,3 +85,38 @@ def search(request):
 
     # عرض النموذج إذا لم يكن الطلب `POST`
     return render(request, 'bookmodule/search.html')
+
+
+def add_books(request):
+    # الكتاب الأول
+    mybooks = Book(title='Continuous Delivery', author='J.Humble and D. Farley', price=120.0, edition=3)
+    mybooks.save()  # حفظ الكتاب الأول
+
+    # الكتاب الثاني
+    mybooks = Book(title='Reversing: Secrets of Reverse Engineering', author='E. Eilam', price=97.0, edition=2)
+    mybooks.save()  # حفظ الكتاب الثاني
+
+    # الكتاب الثالث
+    mybooks = Book(title='The Hundred-Page Machine Learning Book', author='Andriy Burkov', price=100.0, edition=4)
+    mybooks.save()  # حفظ الكتاب الثالث
+
+    return HttpResponse("Books added successfully!")
+
+def simple_query(request):
+    mybooks = Book.objects.all()  # جلب جميع الكتب
+    return render(request, 'bookmodule/bookList.html', {'books':mybooks})
+
+def lookup_query(request):
+    # استخدام دوال التصفية المتقدمة (complex query)
+    mybooks = Book.objects.filter(author__isnull=False) \
+                          .filter(title__icontains='and') \
+                          .filter(edition__gte=2) \
+                          .exclude(price__lte=100)[:10]
+    
+    # إذا كانت هناك كتب تتوافق مع الشروط
+    if len(mybooks) >= 1:
+        return render(request, 'bookmodule/bookList.html', {'books': mybooks})
+    else:
+        # إذا لم تكن هناك نتائج، قم بإعادة توجيه المستخدم إلى الصفحة الرئيسية
+        return render(request, 'bookmodule/index.html')
+
